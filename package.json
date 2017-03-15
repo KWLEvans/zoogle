@@ -1,0 +1,32 @@
+{
+  "name": "zoogle",
+  "version": "1.0.0",
+  "description": "an app for searching animal data... like zoo and google... get it?",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "zoo",
+    "google",
+    "animal",
+    "search",
+    "gbif"
+  ],
+  "author": "Keith Evans and Zach Swanson",
+  "license": "ISC",
+  "devDependencies": {
+    "bower-files": "^3.14.1",
+    "browser-sync": "^2.18.8",
+    "browserify": "^14.1.0",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-jshint": "^2.0.4",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-uglify": "^2.1.0",
+    "jshint": "^2.9.4",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}

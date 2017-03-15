@@ -1,0 +1,28 @@
+{
+  "name": "zoogle",
+  "description": "an app for searching animal data... like zoo and google... get it?",
+  "main": "gulpfile.js",
+  "authors": [
+    "Keith Evans and Zach Swanson"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "zoo",
+    "google",
+    "animal",
+    "search",
+    "gbif"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7"
+  }
+}
