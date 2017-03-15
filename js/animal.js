@@ -2,14 +2,45 @@ function Animal() {
 
 }
 
-Animal.prototype.search = function(name, callback) {
-  console.log(name);
-  console.log(encodeURI(name));
-  var url = "http://api.gbif.org/v1/species/search?datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&q=" + encodeURI(name);
-  console.log(url);
+Animal.prototype.taxonomy = function(name, callback) {
+  var url = "http://api.gbif.org/v1/species/search?language=eng&datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&q=" + encodeURI(name);
+
   $.get(url).then(function(response) {
-    callback(response.results[0].speciesKey);
+
+    var name = "";
+
+    response.results[0].vernacularNames.forEach(function(element) {
+      if (element.language === "eng") {
+        name = element.vernacularName;
+      }
+    });
+
+    var taxonomy = {
+      "kingdom": response.results[0].kingdom,
+      "phylum": response.results[0].phylum,
+      "class": response.results[0].class,
+      "order": response.results[0].order,
+      "family": response.results[0].family,
+      "genus": response.results[0].genus,
+      "species": response.results[0].species
+    };
+
+    callback(name, taxonomy);
   });
-}
+};
+
+Animal.prototype.occurrences = function(name, callback) {
+  var url = "http://api.gbif.org/v1/species/search?language=eng&datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&q=" + encodeURI(name);
+
+  $.get(url).then(function(response) {
+    console.log("first api call");
+    var key = response.results[0].key;
+    var url = "http://api.gbif.org/v1/occurrence/search?speciesKey=" + key;
+    $.get(url).then(function(response) {
+      console.log("second api call");
+      callback(response);
+    });
+  });
+};
 
 exports.animalModule = Animal;
