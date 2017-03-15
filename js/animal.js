@@ -37,7 +37,7 @@ Animal.prototype.occurrences = function(name) {
   $.get(url).then(function(response) {
     console.log("first api call");
     var key = response.results[0].key;
-    var url = "http://api.gbif.org/v1/occurrence/search?speciesKey=" + key;
+    var url = "http://api.gbif.org/v1/occurrence/search?limit=300&speciesKey=" + key;
     $.get(url).then(function(response) {
       locations = [];
       response.results.forEach(function(result) {

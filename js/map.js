@@ -8,8 +8,8 @@ Map.prototype.draw = function(locationsArray) {
   var map;
   $.getScript("https://maps.googleapis.com/maps/api/js?key=" + apiKey, function() {
     map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
+          center: {lat: locationsArray[0][0], lng: locationsArray[0][1]},
+          zoom: 2
         });
 
         locationsArray.forEach(function(location) {
