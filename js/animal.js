@@ -1,3 +1,5 @@
+var Map = require('./../js/map.js').mapModule;
+
 function Animal() {
 
 }
@@ -29,7 +31,7 @@ Animal.prototype.taxonomy = function(name, callback) {
   });
 };
 
-Animal.prototype.occurrences = function(name, callback) {
+Animal.prototype.occurrences = function(name) {
   var url = "http://api.gbif.org/v1/species/search?language=eng&datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&q=" + encodeURI(name);
 
   $.get(url).then(function(response) {
@@ -37,8 +39,14 @@ Animal.prototype.occurrences = function(name, callback) {
     var key = response.results[0].key;
     var url = "http://api.gbif.org/v1/occurrence/search?speciesKey=" + key;
     $.get(url).then(function(response) {
-      console.log("second api call");
-      callback(response);
+      locations = [];
+      response.results.forEach(function(result) {
+        var place = [result.decimalLatitude, result.decimalLongitude];
+        locations.push(place);
+      });
+      console.log(locations);
+      var newMap = new Map();
+      newMap.draw(locations);
     });
   });
 };

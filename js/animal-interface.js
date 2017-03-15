@@ -1,5 +1,5 @@
 var Animal = require('./../js/animal.js').animalModule;
-var Map = require('./../js/map.js').mapModule;
+
 
 function displayResults(results) {
   console.log(results);
@@ -17,10 +17,9 @@ function printTaxonomy(name, taxonomy) {
   $('#display').html(htmlString);
 }
 
-$(function() {
 
-  var map = new Map();
-  map.init();
+
+$(function() {
 
   $("#animal-search").submit(function(event) {
     event.preventDefault();
@@ -28,7 +27,7 @@ $(function() {
     var animal = new Animal();
     var name = $("#animal").val();
     animal.taxonomy(name, printTaxonomy);
-    animal.occurrences(name, displayResults);
+    animal.occurrences(name);
 
   });
 });
