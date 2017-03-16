@@ -13,10 +13,12 @@ Map.prototype.draw = function(locationsArray) {
         });
 
         locationsArray.forEach(function(location) {
-          var marker = new google.maps.Marker({
-            position: {lat: location[0], lng: location[1]},
-            map: map
-          });
+          if ($.isNumeric(location[0]) && $.isNumeric(location[1])) {
+            var marker = new google.maps.Marker({
+              position: {lat: location[0], lng: location[1]},
+              map: map
+            });
+          }
         });
   });
 };
