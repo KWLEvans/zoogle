@@ -13,10 +13,14 @@ function printTaxonomy(name, taxonomy) {
     htmlString +=  taxonomy[rank] + "</li>";
   }
   htmlString += "</ul>";
-  console.log(htmlString);
   $('#display').html(htmlString);
 }
 
+function printOccurences(data) {
+  var htmlString = "<h2>Occurence Data: </h2>";
+  htmlString += "<h4>Displaying " + data.results + " out of " + data.count + " results</h4>";
+  $('#occurence-data').html(htmlString);
+}
 
 
 $(function() {
@@ -27,7 +31,6 @@ $(function() {
     var animal = new Animal();
     var name = $("#animal").val();
     animal.taxonomy(name, printTaxonomy);
-    animal.occurrences(name);
-
+    animal.occurrences(name, printOccurences);
   });
 });

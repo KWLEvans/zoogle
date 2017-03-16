@@ -8,17 +8,39 @@
     <title>Zoogle</title>
   </head>
   <body>
-    <div class="container">
-      <form id="animal-search">
-        <label for="animal">Search an animal name</label>
-        <input id="animal" name="animal" type="text" required>
-        <button type="submit">Search</button>
-      </form>
-      <div id="display">
-
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1>Zoogle</h1>
+        <h3>Like googling, but with animals and stuff.</h3>
       </div>
-      <div id="map">
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7">
+          <h2>Enter an Animal to search:</h2>
+          <form id="animal-search">
+            <label for="animal">Search by scientific name:</label>
+            <input id="animal" name="animal" type="text" required>
+            <button type="submit">Search</button>
+          </form>
+        </div>
+        <div class="col-md-5">
+          <div id="display">
 
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <div id="map">
+
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div id='occurence-data'>
+
+          </div>
+        </div>
       </div>
     </div>
   </body>
