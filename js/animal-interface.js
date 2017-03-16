@@ -23,6 +23,12 @@ function printOccurences(data) {
   $('#occurence-data').html(htmlString);
 }
 
+function doAllTheThings(name) {
+  var animal = new Animal();
+  animal.taxonomy(name, printTaxonomy);
+  animal.occurrences(name, printOccurences);
+}
+
 
 $(function() {
 
@@ -31,7 +37,7 @@ $(function() {
 
     var animal = new Animal();
     var name = $("#animal").val();
-    animal.taxonomy(name, printTaxonomy);
-    animal.occurrences(name, printOccurences);
+    
+    animal.search(name, doAllTheThings);
   });
 });
