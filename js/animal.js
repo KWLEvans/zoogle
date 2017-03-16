@@ -31,12 +31,19 @@ Animal.prototype.taxonomy = function(name, callback) {
   });
 };
 
-Animal.prototype.parseOccurence = function(response,callback) {
+Animal.prototype.parseOccurence = function(name, response, callback) {
   var data = {
+    "name": name,
     "count": response.count,
-    "results": response.results.length
+    "results": response.results.length,
+    "imgSrc": ""
   };
-  callback(data);
+  var url = "https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=" + encodeURI(name) +"&redirects";
+  $.get(url).then(function(response) {
+    var pageKey = Object.keys(response.query.pages)[0];
+    data.imgSrc = response.query.pages[pageKey].original.source;
+    callback(data);
+  });
 }
 
 Animal.prototype.occurrences = function(name, callback) {
@@ -47,7 +54,7 @@ Animal.prototype.occurrences = function(name, callback) {
     var key = response.results[0].key;
     var url = "http://api.gbif.org/v1/occurrence/search?limit=300&speciesKey=" + key;
     $.get(url).then(function(response) {
-      that.parseOccurence(response,callback);
+      that.parseOccurence(name, response, callback);
       locations = [];
       response.results.forEach(function(result) {
         var place = [result.decimalLatitude, result.decimalLongitude];

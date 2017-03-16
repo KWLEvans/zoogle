@@ -1,8 +1,18 @@
 #map {
   height: 600px;
-  width: 600px;
+  width: 100%;
+}
+
+#search-image {
+  width: 100%;
 }
 
 .row {
   margin: 20px;
+  border: solid 2px gray;
+  padding: 5px;
+}
+
+.column {
+  min-height: 250px;
 }

@@ -19,6 +19,7 @@ function printTaxonomy(name, taxonomy) {
 function printOccurences(data) {
   var htmlString = "<h2>Occurence Data: </h2>";
   htmlString += "<h4>Displaying " + data.results + " out of " + data.count + " results</h4>";
+  htmlString += "<img id='search-image' src='" + data.imgSrc + "' alt='an image of '" + data.name + "'>";
   $('#occurence-data').html(htmlString);
 }
 
